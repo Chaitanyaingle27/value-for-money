@@ -1,7 +1,8 @@
 #include<iostream>
 #include<string>
-#include<windows.h>
+#include<windows.h>//add this for Sleep()
 #include<cmath> // Add this at the top
+#include<conio.h> // Add this for _getch()
 using namespace std;
 class InvestmentCalculator
 { public:
@@ -9,8 +10,7 @@ class InvestmentCalculator
     { //1
         system("cls");
         double principal,rate; 
-        int time;
-       
+        int time;       
         cout<<"\t enter the principal amount: ";
         cin >> principal;
         cout<<"\t enter the rate of interest: ";
@@ -21,7 +21,9 @@ class InvestmentCalculator
         Sleep(1000);
         double futureValue = principal * pow((1 +( rate / 100)), time);
         cout << "\tFuture Value: " << futureValue << endl;
-        Sleep(5000);
+        int key;
+        cout << "\tPress any key to continue..." << endl;
+        key = _getch(); // Wait for user input
     }
     void calculatePresentValue()
     {//2
@@ -38,7 +40,9 @@ class InvestmentCalculator
         Sleep(1000);
         double presentValue = futureValue / pow((1 + (rate / 100)), time);
         cout << "\tPresent Value: " << presentValue << endl;
-        Sleep(5000);
+        int key;
+        cout << "\tPress any key to continue..." << endl;
+        key = _getch(); // Wait for user input
     }
     void calculateFutureValueOfAnnuity()
     {//3
@@ -55,7 +59,9 @@ class InvestmentCalculator
         Sleep(1000);
         double futureValue = payment * ((pow((1 + (rate / 100)), time) - 1) / (rate / 100));
         cout << "\tFuture Value of Annuity: " << futureValue << endl;
-        Sleep(5000);
+         int key;
+        cout << "\tPress any key to continue..." << endl;
+        key = _getch(); // Wait for user input
     }
     void calculatePresentValueOfAnnuity()
     {//4
@@ -72,7 +78,9 @@ class InvestmentCalculator
         Sleep(1000);
         double presentValue = payment * ((pow((1 + (rate / 100)), time)-1) / (rate / 100)*pow((1 + (rate / 100)), time));
         cout << "\tPresent Value of Annuity: " << presentValue << endl;
-        Sleep(5000);
+        int key;
+        cout << "\tPress any key to continue..." << endl;
+        key = _getch(); // Wait for user input
        
         
     }
@@ -91,25 +99,30 @@ class InvestmentCalculator
         Sleep(1000);
         double annuity = futureValue * (rate / 100) / (pow((1 + (rate / 100)), time) - 1);
         cout << "\tAnnuity for Long Term Investment: " << annuity << endl;
-        Sleep(5000);
+        int key;
+        cout << "\tPress any key to continue..." << endl;
+        key = _getch(); // Wait for user input
     }
     void calculateEMIForLoan()
     {//6
         system("cls");
         double principal, rate;
-        int time;
+        int year, months;
         cout<<"\t enter the principal amount: ";
         cin >> principal;
         cout<<"\t enter the rate of interest: ";
         cin >> rate;
-        cout<<"\t enter the time in months: ";
-        cin >> time;
+        cout<<"\t enter the time in years: ";
+        cin >>year ;
+        months = year * 12; // Convert years to months
         cout << "\n\tCalculating EMI for loan..." << endl;
         Sleep(1000);
         double monthlyRate = rate / (12 * 100);
-        double emi = (principal * monthlyRate * pow((1 + monthlyRate), time)) / (pow((1 + monthlyRate), time) - 1);
+        double emi = (principal * monthlyRate * pow((1 + monthlyRate), months)) / (pow((1 + monthlyRate), months) - 1);
         cout << "\tEMI for Loan: " << emi << endl;
-        Sleep(5000);
+        int key;
+        cout << "\tPress any key to continue..." << endl;
+        key = _getch(); // Wait for user input
     }
 
 };
@@ -175,7 +188,7 @@ int main()
         {  
             cout << "\tExiting the program." << endl;
             cout << "\tThank you for using the Value for Money Calculator!" << endl;
-            Sleep(2000);
+            Sleep(500);
             break; // Exit the loop and terminate the program
         }
         Sleep(2000);
