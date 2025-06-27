@@ -6,21 +6,109 @@ using namespace std;
 class InvestmentCalculator
 { public:
     void calculateFutureValue()
-    { 
+    { //1
         system("cls");
         double principal,rate; 
         int time;
+       
         cout<<"\t enter the principal amount: ";
         cin >> principal;
         cout<<"\t enter the rate of interest: ";
         cin >> rate;
         cout<<"\t enter the time in years: ";
         cin >> time;
-        Sleep(2000);
         cout << "\n\tCalculating future value..." << endl;
         Sleep(1000);
         double futureValue = principal * pow((1 +( rate / 100)), time);
         cout << "\tFuture Value: " << futureValue << endl;
+        Sleep(5000);
+    }
+    void calculatePresentValue()
+    {//2
+        system("cls");
+        double futureValue, rate;
+        int time;
+        cout<<"\t enter the future value: ";
+        cin >> futureValue;
+        cout<<"\t enter the rate of interest: ";
+        cin >> rate;
+        cout<<"\t enter the time in years: ";
+        cin >> time;
+        cout << "\n\tCalculating present value..." << endl;
+        Sleep(1000);
+        double presentValue = futureValue / pow((1 + (rate / 100)), time);
+        cout << "\tPresent Value: " << presentValue << endl;
+        Sleep(5000);
+    }
+    void calculateFutureValueOfAnnuity()
+    {//3
+        system("cls");
+        double payment, rate;
+        int time;
+        cout<<"\t enter the payment amount: ";
+        cin >> payment;
+        cout<<"\t enter the rate of interest: ";
+        cin >> rate;
+        cout<<"\t enter the time in years: ";
+        cin >> time;
+        cout << "\n\tCalculating future value of annuity..." << endl;
+        Sleep(1000);
+        double futureValue = payment * ((pow((1 + (rate / 100)), time) - 1) / (rate / 100));
+        cout << "\tFuture Value of Annuity: " << futureValue << endl;
+        Sleep(5000);
+    }
+    void calculatePresentValueOfAnnuity()
+    {//4
+        system("cls");
+        double payment, rate;
+        int time;
+        cout<<"\t enter the payment amount: ";
+        cin >> payment;
+        cout<<"\t enter the rate of interest: ";
+        cin >> rate;
+        cout<<"\t enter the time in years: ";
+        cin >> time;
+        cout << "\n\tCalculating present value of annuity..." << endl;
+        Sleep(1000);
+        double presentValue = payment * ((pow((1 + (rate / 100)), time)-1) / (rate / 100)*pow((1 + (rate / 100)), time));
+        cout << "\tPresent Value of Annuity: " << presentValue << endl;
+        Sleep(5000);
+       
+        
+    }
+    void calculateAnnuityForLongTermInvestment()
+    {//5
+        system("cls");
+        double futureValue, rate;
+        int time;
+        cout<<"\t enter the future value: ";
+        cin >> futureValue;
+        cout<<"\t enter the rate of interest: ";
+        cin >> rate;
+        cout<<"\t enter the time in years: ";
+        cin >> time;
+        cout << "\n\tCalculating annuity for long term investment..." << endl;
+        Sleep(1000);
+        double annuity = futureValue * (rate / 100) / (pow((1 + (rate / 100)), time) - 1);
+        cout << "\tAnnuity for Long Term Investment: " << annuity << endl;
+        Sleep(5000);
+    }
+    void calculateEMIForLoan()
+    {//6
+        system("cls");
+        double principal, rate;
+        int time;
+        cout<<"\t enter the principal amount: ";
+        cin >> principal;
+        cout<<"\t enter the rate of interest: ";
+        cin >> rate;
+        cout<<"\t enter the time in months: ";
+        cin >> time;
+        cout << "\n\tCalculating EMI for loan..." << endl;
+        Sleep(1000);
+        double monthlyRate = rate / (12 * 100);
+        double emi = (principal * monthlyRate * pow((1 + monthlyRate), time)) / (pow((1 + monthlyRate), time) - 1);
+        cout << "\tEMI for Loan: " << emi << endl;
         Sleep(5000);
     }
 
@@ -40,7 +128,7 @@ int main()
         cout<<"\t5. calculate the annuity for your long term investment"<<endl;
         cout<<"\t6. calculate the the EMI for your loan"<<endl;
         cout<<"\t7. exit the program\n"<<endl;
-        cout<<"\t choose an option (1-7) ";
+        cout<<"\t choose an option (1-7) : ";
         int choice;
         cin>>choice;
         if(choice < 1 || choice > 7)
@@ -51,33 +139,37 @@ int main()
         {  
             cout << "\tCalculating the future value of an investment..." << endl;
             Sleep(2000);
-            // Future value calculation logic here
             calculator.calculateFutureValue(); // Call the method to calculate future value
         }
         else if(choice == 2)
         {
-            cout << "Calculating the present value of an investment..." << endl;
-            // Present value calculation logic here
+            cout << "\tCalculating the present value of an investment..." << endl;
+            Sleep(2000);
+            calculator.calculatePresentValue(); // Call the method to calculate present value
         }
         else if(choice == 3)
         {
-            cout << "Calculating the future value of an annuity..." << endl;
-            // Future value of annuity calculation logic here
+            cout << "\tCalculating the future value of an annuity..." << endl;
+            Sleep(2000);
+            calculator.calculateFutureValueOfAnnuity(); // Call the method to calculate future value of annuity
         }
         else if(choice == 4)
         {
-            cout << "Calculating the present value of an annuity..." << endl;
-            // Present value of annuity calculation logic here
+            cout << "\tCalculating the present value of an annuity..." << endl;
+            Sleep(2000);
+            calculator.calculatePresentValueOfAnnuity(); // Call the method to calculate present value of annuity
         }
         else if(choice == 5)
         {
-            cout << "Calculating the annuity for your long term investment..." << endl;
-            // Annuity calculation logic here
+            cout << "\tCalculating the annuity for your long term investment..." << endl;
+            Sleep(2000);
+            calculator.calculateAnnuityForLongTermInvestment(); // Call the method to calculate annuity for long term investment    
         }
         else if(choice == 6)
         {
-            cout << "Calculating the EMI for your loan..." << endl;
-            // EMI calculation logic here
+            cout << "\tCalculating the EMI for your loan..." << endl;
+            Sleep(2000);
+            calculator.calculateEMIForLoan(); // Call the method to calculate EMI for loan
         }
         if(choice ==7)
         {  
