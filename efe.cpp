@@ -8,8 +8,8 @@ int main()
     {  
         system("cls");
         cout<<"\n\t welcome to the value for money calculator\n"<<endl;
-    cout<<"\t1. calculate the future value of an investment"<<endl;
-    cout<<"\t2. calculate the present value of an investment"<<endl;
+        cout<<"\t1. calculate the future value of an investment"<<endl;
+        cout<<"\t2. calculate the present value of an investment"<<endl;
         cout<<"\t3. calculate the future value of an annuity"<<endl;
         cout<<"\t4. calculate the present value of an annuity"<<endl;
         cout<<"\t5. calculate the annuity for your long term investment"<<endl;
@@ -19,11 +19,10 @@ int main()
         int choice;
         cin>>choice;
         if(choice < 1 || choice > 7)
-    {
-            cout << "Exiting the program." << endl;
+        {
             return main(); // Exit the loop and terminate the program
         }
-    else if(choice == 1)
+        else if(choice == 1)
         {
             cout << "Calculating the future value of an investment..." << endl;
             // Future value calculation logic here
@@ -54,9 +53,10 @@ int main()
             // EMI calculation logic here
         }
         if(choice ==7)
-        {  Sleep(5000);
-            cout << "Exiting the program." << endl;
-            cout << "Thank you for using the Value for Money Calculator!" << endl;
+        {  
+            cout << "\tExiting the program." << endl;
+            cout << "\tThank you for using the Value for Money Calculator!" << endl;
+            Sleep(2000);
             break; // Exit the loop and terminate the program
         }
         Sleep(2000);
