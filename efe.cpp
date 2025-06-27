@@ -1,9 +1,34 @@
 #include<iostream>
 #include<string>
 #include<windows.h>
+#include<cmath> // Add this at the top
 using namespace std;
+class InvestmentCalculator
+{ public:
+    void calculateFutureValue()
+    { 
+        system("cls");
+        double principal,rate; 
+        int time;
+        cout<<"\t enter the principal amount: ";
+        cin >> principal;
+        cout<<"\t enter the rate of interest: ";
+        cin >> rate;
+        cout<<"\t enter the time in years: ";
+        cin >> time;
+        Sleep(2000);
+        cout << "\n\tCalculating future value..." << endl;
+        Sleep(1000);
+        double futureValue = principal * pow((1 +( rate / 100)), time);
+        cout << "\tFuture Value: " << futureValue << endl;
+        Sleep(5000);
+    }
+
+};
 int main()
 {
+    InvestmentCalculator calculator;
+
     while(true)
     {  
         system("cls");
@@ -23,9 +48,11 @@ int main()
             return main(); // Exit the loop and terminate the program
         }
         else if(choice == 1)
-        {
-            cout << "Calculating the future value of an investment..." << endl;
+        {  
+            cout << "\tCalculating the future value of an investment..." << endl;
+            Sleep(2000);
             // Future value calculation logic here
+            calculator.calculateFutureValue(); // Call the method to calculate future value
         }
         else if(choice == 2)
         {
